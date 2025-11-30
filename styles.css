@@ -1,0 +1,742 @@
+:root {
+    --purple: #4C3F91;
+    --purple-dark: #3b307a;
+    --yellow: #EE9A1B;
+    --pink: #D03256;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+    background: var(--purple);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* NAV */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background-color: var(--purple);
+    position: sticky;
+    top: 0;
+}
+
+.logo-nav {
+    height: 100px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* 📱 AJUSTES RESPONSIVE PARA MÓVILES */
+@media (max-width: 768px) {
+    
+    /* 1. Ajustar el contenedor de la barra de navegación */
+    .navbar {
+        /* Permite que el logo y los enlaces se muevan libremente si es necesario */
+        flex-wrap: wrap; 
+        padding: 15px 5%; /* Ajusta el padding para que no se pegue a los bordes */
+    }
+
+    /* 2. Reducir el tamaño del logo para móviles */
+    .logo-nav {
+        height: 60px; /* Reducir el logo para ahorrar espacio vertical */
+        margin-right: auto; /* Empuja los enlaces hacia la derecha si no se apilan */
+    }
+
+    /* 3. Apilar los enlaces verticalmente */
+    .nav-links {
+        /* Ocupar todo el ancho y forzar la siguiente línea del flex */
+        width: 100%; 
+        
+        /* Apilar los enlaces */
+        flex-direction: column; 
+        gap: 10px; /* Espacio vertical entre los enlaces */
+        
+        /* Centrar los enlaces apilados */
+        align-items: center; 
+        text-align: center;
+        
+        /* Añadir un poco de margen superior para separarlos del logo */
+        margin-top: 15px; 
+    }
+
+    /* Opcional: Aumentar el tamaño del texto para que sea más fácil de tocar */
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    /* 4. Ajustes para el submenú (el UL anidado) */
+    .nav-links li ul {
+        display: none;
+        
+        /* Eliminar posicionamiento absoluto */
+        position: static; 
+        
+        /* Ajustar estilos para que aparezca "en línea" */
+        background-color: transparent;
+        margin-top: 5px;
+        padding-left: 0; /* Indentar para distinguirlo del principal */
+    }
+
+    /* 🆕 Mostrar el submenú si el menú es desplegado (si usas JS) */
+    /* Si el menú principal está visible (clase 'active'), mostramos el submenú también. */
+    .nav-links.active li:last-child ul {
+        display: block;
+    }
+    
+    /* 🆕 Estilos de enlaces para móvil */
+    .nav-links li ul li a {
+        padding: 5px 0;
+        text-align: left;
+        /* ... otros ajustes de fuente si es necesario ... */
+    }
+
+
+}
+
+.nav-links li {
+    /* Establece la posición relativa para que el submenú se posicione de forma absoluta respecto a este LI */
+    position: relative; 
+    /* ... Tus otros estilos para los LI ... */
+}
+
+/* 2. Estilo y Ocultamiento del Submenú (el UL anidado) */
+.nav-links li ul {
+    /* Ocultar por defecto */
+    display: none; 
+    
+    /* Posicionar el submenú */
+    position: absolute;
+    top: 100%; /* Coloca el submenú justo debajo del elemento padre LI */
+    left: 0;
+    
+    /* Estilo visual del desplegable */
+    min-width: 100px; /* Asegura que el submenú tenga un ancho legible */
+    list-style: none; /* Quitar viñetas */
+    z-index: 10; /* Asegura que se muestre por encima del resto del contenido */
+    
+    /* Estilo de la transición (opcional, para suavidad) */
+    transition: opacity 0.3s ease;
+}
+
+/* 3. Estilo de los Enlaces dentro del Submenú */
+.nav-links li ul li {
+    padding: 0; /* Quita el padding si lo tenía el LI principal */
+    display: block; /* Asegura que cada LI ocupe su propia línea */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.nav-links li ul li a {
+    padding: 8px 0; /* Padding interno para el área de clic */
+    display: block;
+}
+
+.nav-links li ul li a:hover {
+    background-color: var(--purple); /* Resaltar al pasar el ratón */
+}
+
+/* 4. Mostrar el Submenú al pasar el ratón sobre el LI padre */
+.nav-links li:hover > ul {
+    display: block; /* Vuelve a mostrar el submenú */
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 10%;
+}
+.hero-text h1 {
+    font-size: 2.8rem;
+}
+
+.hero-text h1 span {
+    color: var(--yellow);
+}
+
+.highlight-text {
+    color: var(--yellow);
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+
+.hero-img {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 48%;
+    padding-left: 1rem;
+}
+
+.hero-img img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Responsive: apilar en móviles */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .hero-img {
+        max-width: 100%;
+        padding-left: 0;
+    }
+    .hero-img img {
+        width: 80%;
+        max-height: 320px;
+    }
+}
+.hero-subtext{
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.btn {
+    background: var(--pink);
+    color: var(--white);
+    padding: 13px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+/* SECTIONS */
+.section {
+    padding: 40px 10%;
+}
+
+.purple-bg {
+
+    background: var(--purple);
+    color: var(--white);
+}
+
+.white-bg {
+    background: var(--white);
+    color: var(--black);
+}
+
+.section-title {
+    color: var(--purple);
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.highlight-text {
+    color: var(--yellow);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.highlight-text2 {
+    color: var(--yellow);
+    font-weight: bold;
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin: 0.6rem auto 1.6rem;
+    padding: 0 1rem;
+}
+
+.section-text {
+            max-width: 900px;
+            margin: 0.6rem auto 1.6rem;
+            padding: 0 1rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Ajuste para pantallas grandes */
+        @media (min-width: 768px) {
+            .section-text {
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+.card {
+            background: var(--pink);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            color: var(--white);
+            text-align: center;
+ }
+
+
+/* SERVICES */
+/* Mejora disposición y estilos de la sección de servicios */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 24px;
+        align-items: start;
+        padding: 8px 0 24px;
+    }
+
+    .service-card {
+        background: #f8f8f8;
+        color: #111827;
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+    }
+
+    .icon-placeholder,
+    .icon-placeholder-small {
+        background: var(--pink);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        width: 78px;
+        height: 78px;
+        box-shadow: none;
+        transform: none;
+        transition: none;
+        outline: none;
+        overflow: visible;
+    }
+
+    /* tamaños reducidos */
+    .icon-placeholder-small {
+        width: 56px;
+        height: 56px;
+    }
+
+    /* ocultar decoraciones anteriores si existían */
+    .icon-placeholder::before,
+    .icon-placeholder::after,
+    .icon-placeholder-small::before,
+    .icon-placeholder-small::after {
+        content: none;
+        display: none;
+    }
+
+    /* mantener el SVG centrado y escalado */
+    .icon-placeholder svg,
+    .icon-placeholder-small svg {
+        width: 46%;
+        height: 46%;
+    }
+
+    /* ajuste móvil */
+    @media (max-width: 768px) {
+        .icon-placeholder { width: 64px; height: 64px; }
+        .icon-placeholder-small { width: 48px; height: 48px; }
+    }
+
+    
+    
+    .service-card h3 {
+        margin: 20px 0 8px;
+        font-size: 1.05rem;
+        line-height: 1.2;
+        color: var(--yellow);
+    }
+
+    .service-sub {
+        margin: 0 0 12px;
+        color: var(--purple-dark);
+        font-size: 0.95rem;
+
+    }
+
+    .service-cta {
+        margin: 5px 0 12px;
+        color: var(--yellow);
+        font-size: 0.95rem;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .service-card hr {
+        border: 0;
+        height: 1px;
+        background: rgba(16,24,40,0.06);
+        margin: 12px 0;
+    }
+
+    .service-card ul {
+        margin: 0;
+        padding-left: 18px;
+        line-height: 1.6;
+        color: #333;
+        flex: 1 0 auto;
+    }
+
+    .service-card li {
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 520px) {
+        .service-card { min-height: unset; padding: 14px; }
+        .icon-placeholder { width: 48px; height: 48px; }
+    }
+
+/* METHOD */
+
+/* Responsive: sección METHOD (sencilla y sin solaparse al hacer scroll) */
+@media (max-width: 880px) {
+    /* Asegurar que el contenedor no use posiciones que lo dejen por encima */
+    #method { position: static; z-index: 0; padding: 24px 1rem; }
+
+    /* Apilar fases verticalmente y que ocupen todo el ancho disponible */
+    .phases-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        max-width: 640px;
+        margin: 16px auto;
+        padding: 0 0.5rem;
+    }
+
+    /* Tarjetas de fase ocupan 100% y no tienen posición absoluta */
+    .phase-card {
+        flex-basis: auto;
+        width: 100%;
+        padding: 18px;
+        border-radius: 10px;
+        position: static; /* evita que queden por encima al hacer scroll */
+        transform: none;
+        box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+    }
+
+    /* Ocultar las líneas de conexión en pantallas pequeñas para evitar solapamientos */
+    .phase-card:not(:last-child)::after {
+        display: none;
+    }
+
+    /* Ajustes tipográficos y de iconos para móvil */
+    .phase-number { font-size: 1.8rem; }
+    .phase-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .icon-placeholder-small { width: 44px; height: 44px; }
+    .tagline { margin-top: 28px; font-size: 1rem; }
+}
+
+/* Ajustes intermedios (tablets) para mantener proporciones */
+@media (min-width: 881px) and (max-width: 1200px) {
+    .phases-container {
+        gap: 22px;
+        max-width: 920px;
+        padding: 0 2rem;
+    }
+    .phase-card { flex-basis: 31%; }
+    .phase-number { font-size: 2rem; }
+}
+
+/* Centrado global de títulos y texto */
+#method {
+    text-align: center;
+}
+
+.method-sub {
+    font-size: 1rem;
+    color: gray;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+/* 1. CONTENEDOR DE FASES */
+.phases-container {
+    display: flex;
+    gap: 30px; /* Aumentamos el espacio entre tarjetas */
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+/* 2. TARJETA INDIVIDUAL (Foco en el Diseño) */
+.phase-card {
+    /* Usamos un fondo más sutil para la tarjeta */
+    background: #f8f8f8; 
+    padding: 30px 20px;
+    border-radius: 12px;
+    color: var(--black);
+    text-align: left; /* Alineamos el contenido dentro de la tarjeta */
+    flex-basis: 30%; /* Asegura que las tarjetas tengan un ancho fijo */
+   /* position: relative; *//* Clave para la línea de conexión */
+    border: 2px solid transparent; /* Añadimos un borde transparente para hover */
+    transition: all 0.3s ease;
+}
+
+/* Efecto Hover para destacar la fase actual */
+.phase-card:hover {
+    border-color: var(--yellow); /* Borde amarillo al pasar el mouse */
+    background: #fff; /* Fondo blanco para contraste */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+   
+}
+
+/* 3. NUMERACIÓN DE LA FASE */
+.phase-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ccc; /* Color sutil para el número */
+    margin-bottom: 10px;
+}
+
+/* Damos un toque de color al título de la fase */
+.phase-card h3 {
+    color: var(--yellow); 
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Estilo del icono (para que se centre y tenga un fondo) */
+.icon-placeholder-small {
+    /* Esto es crucial si tu icono es un SVG inyectado, le da un contenedor */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--pink); 
+    color: black;
+    margin-bottom: 10px;
+}
+
+
+/* 4. LÍNEA DE CONEXIÓN ENTRE FASES (LA MEJORA VISUAL CLAVE) */
+/* Se aplica a todas las tarjetas EXCEPTO la última */
+.phase-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50px; /* Ajusta la altura de la línea */
+    right: -30px; /* Mueve la línea al espacio entre tarjetas */
+    width: 30px; /* Longitud de la línea */
+    height: 2px;
+    background-color: #ccc; /* Color de la línea de conexión */
+}
+
+/* 5. ETIQUETA FINAL (TAGLINE) */
+.tagline {
+    margin-top: 50px; /* Aumentamos la separación */
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--yellow);
+}
+
+/* 6. CONTENEDOR DE LA EXPLICACIÓN (2 COLUMNAS) */
+.method-explanation-grid {
+    display: flex; /* Activa Flexbox para poner las tarjetas una al lado de la otra */
+    gap: 30px; /* Espacio entre las dos tarjetas */
+    justify-content: center;
+    max-width: 1000px; /* Mismo ancho que el contenedor de fases */
+    margin: 40px auto 0 auto; /* Separación y centrado */
+    padding: 0 20px;
+}
+
+/* 7. ESTILOS DE LAS TARJETAS INDIVIDUALES */
+.method-card {
+    /* Diseño visual */
+    background: #fff; /* Fondo blanco */
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    
+    /* Control de tamaño */
+    flex: 1; /* Permite que ambas tarjetas ocupen el mismo ancho */
+    text-align: left;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto Hover opcional para las tarjetas */
+.method-card:hover {
+    transform: translateY(-5px); /* Se levantan un poco */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de subtítulo para diferenciar las secciones */
+.method-card h4 {
+    font-size: 1.15rem;
+    color: var(--purple-dark);
+    margin-top: 0; /* Quitar margen superior extra */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.method-card p {
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin-bottom: 0;
+}
+
+/* 8. ESTILO PARA EL PÁRRAFO INTRODUCTORIO */
+.method-intro {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-top: 20px;
+    margin-bottom: 25px; /* Espacio antes de que inicie el grid de tarjetas */
+    text-align: center; /* Asegura que el texto esté centrado si no ocupa todo el ancho */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CONTACT */
+.contact {
+    background: var(--purple-dark);
+    text-align: center;
+}
+
+.contact-form, 
+.newsletter {
+    max-width: 600px;
+    margin: 25px auto;
+}
+
+.contact-form input,
+.contact-form textarea,
+.newsletter input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+}
+ 
+.contact-info {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 20px auto 0 auto; /* Top: 20px, Left/Right: auto (centra), Bottom: 0 */
+}
+
+.contact-img {
+    max-width: 100%;
+    margin-top: 70px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .contact-img {
+        max-width: 100%;
+        padding-left: 0;
+        margin-left: 80px;
+        margin-top: 20px;
+    }
+    .contact-img img {
+        width: 80%;
+        max-height: 320px;
+    }
+}
+
+
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 10%;
+    background: black;
+    color: white; /* Aseguramos que el texto base sea blanco */
+}
+
+/* --- TEXTOS PRINCIPALES --- */
+/* (H2 y H3 no necesitan reglas aquí si ya están definidas globalmente) */
+.footer-text h3 {
+    margin-bottom: 20px; /* Separación después del mensaje principal */
+}
+
+/* --- ENLACES LEGALES (Términos, Políticas) --- */
+.footer-links {
+    /* Ajustamos el margin para que no esté tan separado como antes */
+    margin: 10px 0 10px 0; 
+    text-align: left;
+}
+
+.footer-links a {
+    /* Usamos el color de tu variable para que coincida */
+    color: var(--yellow); 
+    text-decoration: none;
+    margin-right: 5px; /* Pequeña separación del '|' */
+}
+
+/* --- NUEVO: REDES SOCIALES --- */
+.footer-socials {
+    margin: 60px 0 10px 0; /* Separación de la sección de arriba y el copyright */
+    text-align: left;
+}
+
+.footer-socials a {
+    color: white; /* Iconos blancos */
+    font-size: 20px;
+    margin-right: 15px; /* Espacio entre iconos */
+    transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--yellow); /* Se resaltan al pasar el mouse */
+}
+
+/* --- NUEVO: COPYRIGHT --- */
+.footer-copyright p {
+    font-size: 0.8rem;
+    color: #ccc; /* Color gris suave */
+    text-align: left; /* Alineado a la izquierda para que siga el flujo de footer-text */
+    margin-top: 20px;
+    padding-top: 10px; /* Espacio arriba del copyright */
+    border-top: 1px solid #333; /* Línea sutil para separarlo del contenido superior */
+}
