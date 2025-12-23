@@ -264,6 +264,13 @@ body {
     text-align: center;
 }
 
+.section-title white{
+    color: var(--white);
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .highlight-text {
     color: var(--yellow);
     font-weight: bold;
