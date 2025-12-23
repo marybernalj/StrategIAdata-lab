@@ -420,6 +420,10 @@ body {
         font-size: 0.95rem;
     }
 
+.section-title.white {
+    color: #ffffff;
+}
+
     /* Ajustes responsivos */
     @media (max-width: 520px) {
         .service-card { min-height: unset; padding: 14px; }
@@ -740,3 +744,26 @@ body {
     padding-top: 10px; /* Espacio arriba del copyright */
     border-top: 1px solid #333; /* Línea sutil para separarlo del contenido superior */
 }
+
+/* Contacto en fondo blanco */
+#contact.white-bg {
+    background: #ffffff;
+}
+
+/* Ajuste del texto en contacto claro */
+#contact .section-title {
+    color: #1a1a1a;
+}
+
+#contact .section-text {
+    color: #444;
+    max-width: 600px;
+}
+
+/* Imagen de contacto más integrada */
+#contact .contact-img {
+    max-width: 100%;
+    opacity: 0.95;
+}
+
+
