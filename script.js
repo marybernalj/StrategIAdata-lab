@@ -56,10 +56,10 @@
   const urlSubstack = 'https://marybernalj.substack.com';
   
   // 3. Asigna la acción al evento 'click'
-  botonSubstack.addEventListener('click', function() {
+  //botonSubstack.addEventListener('click', function() {
     // Redirige al usuario a la URL de suscripción en una nueva pestaña
-    window.open(urlSubstack, '_blank'); 
-  });
+   // window.open(urlSubstack, '_blank'); 
+ // });
 
 // Código para validar el formulario de suscripción al newsletter
 
