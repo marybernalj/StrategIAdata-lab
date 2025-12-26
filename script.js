@@ -60,3 +60,12 @@
     // Redirige al usuario a la URL de suscripción en una nueva pestaña
     window.open(urlSubstack, '_blank'); 
   });
+
+// Código para validar el formulario de suscripción al newsletter
+
+    //Agregamos la redirección automática al Blog
+    document.getElementById('newsletter-form').addEventListener('submit', function() {
+        setTimeout(() => {
+            window.location.href = "http://localhost/blog-strategia/"; // O la URL de tus temas
+        }, 1200); 
+    });
