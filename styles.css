@@ -688,6 +688,10 @@ body {
         padding-left: 0;
         margin-left: 80px;
         margin-top: 20px;
+
+        /* --- PROPIEDADES PARA QUEDAR DEBAJO --- */
+        position: relative; 
+        z-index: -1; /* El valor negativo lo manda al fondo de todo */
     }
     .contact-img img {
         width: 80%;
