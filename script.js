@@ -53,7 +53,7 @@
   const botonSubstack = document.getElementById('btn');
   
   // 2. Define la URL de redirección
-  const urlSubstack = 'https://marybernalj.substack.com';
+  const urlSubstack = 'https://marybernalj.com';
   
   // 3. Asigna la acción al evento 'click'
   //botonSubstack.addEventListener('click', function() {
@@ -66,6 +66,6 @@
     //Agregamos la redirección automática al Blog
     document.getElementById('newsletter-form').addEventListener('submit', function() {
         setTimeout(() => {
-            window.location.href = "http://localhost/blog-strategia/"; // O la URL de tus temas
+            window.location.href = "https://marybernalj.com"; // O la URL de tus temas
         }, 1200); 
     });
