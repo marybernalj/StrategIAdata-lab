@@ -69,3 +69,49 @@
             window.location.href = "https://marybernalj.com"; // O la URL de tus temas
         }, 1200); 
     });
+
+    
+/* --- Lógica del Formulario de Contacto --- */
+const scriptURL = 'https://script.google.com/macros/s/AKfycbw28OETFZjyEFnWfckRVvQYMXlf-RnVyMqMb5w94B7GDIro1KpnbaaxKybAmVC3Y8AcGA/exec';
+const form = document.getElementById('mi-formulario');
+const btnEnviar = document.getElementById('boton-enviar');
+
+if (form) {
+    form.addEventListener('submit', e => {
+        e.preventDefault(); 
+        
+        // 1. DETECTAMOS EL IDIOMA ANTES DE CAMBIAR EL TEXTO
+        // Buscamos "Send" en el botón original
+        const esIngles = btnEnviar.innerText.toLowerCase().includes('send');
+        
+        // 2. CAMBIAMOS EL TEXTO DE CARGA SEGÚN EL IDIOMA
+        btnEnviar.innerText = esIngles ? 'Sending...' : 'Enviando...';
+        btnEnviar.disabled = true;
+
+        fetch(scriptURL, { 
+            method: 'POST', 
+            body: new FormData(form)
+        })
+        .then(response => {
+            console.log('¡Éxito!', response);
+            
+            // 3. USAMOS LA VARIABLE QUE GUARDAMOS AL PRINCIPIO
+            if (esIngles) {
+                btnEnviar.innerText = 'Message sent!';
+            } else {
+                btnEnviar.innerText = '¡Mensaje enviado!';
+            }
+
+            btnEnviar.style.backgroundColor = 'var(--yellow)';
+            btnEnviar.disabled = true;
+            form.reset();
+        })
+        .catch(error => {
+            console.error('¡Error!', error.message);
+            // Error también bilingüe
+            btnEnviar.innerText = esIngles ? 'Error' : 'Error al enviar';
+            btnEnviar.disabled = false;
+            alert(esIngles ? 'Error sending message.' : 'Hubo un error al enviar el mensaje.');
+        });
+    });
+}
