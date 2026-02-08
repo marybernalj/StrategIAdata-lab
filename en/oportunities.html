@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StrategIA Data Lab</title>
-    <link rel="icon" type="image/png" href="Images/icono.png">
+    <link rel="icon" type="image/png" href="../Images/icono.png">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <link rel="alternate" href="https://strategialab.ai/" hreflang="es" />   
@@ -302,16 +302,13 @@
     </div>
 
     <div class="hero-img">
-        <form class="contact-form"
-            action="https://formspree.io/f/mdkqobpg"
-            method="POST"
-        >
-            <input type="text" placeholder="First and last name" required name="nombre">
-            <input type="text" placeholder="Company (optional)" name="empresa">
-            <input type="tel" placeholder="Phone number" name="telefono">
-            <input type="email" placeholder="Email address" required name="correo">
-            <textarea placeholder="Why do you want to contact us?" required name="mensaje"></textarea>
-            <button type="submit" class="btn">Send message</button>
+        <form class="contact-form" id="mi-formulario">
+                <input type="text" placeholder="First and last name" required name="nombre">
+                <input type="text" placeholder="Company (optional)" name="empresa">
+                <input type="tel" placeholder="Phone number" name="telefono">
+                <input type="email" placeholder="Email address" required name="correo">
+                <textarea placeholder="Why do you want to contact us?" required name="mensaje"></textarea>
+                <button type="submit" class="btn" id="boton-enviar">Send message</button>
         </form>
     </div>
 </section>
@@ -346,12 +343,14 @@
     </div>
     
     <div class="footer-img">
-        <div class="newsletter">
-            <h3 class="highlight-text">Join our newsletter</h3><br>
-            <p>Receive tools, insights, and news about AI and data.</p><br>
-            <input type="email" placeholder="Your email address">
-            <button class="btn" id="btn">Subscribe</button>
-        </div>
+            <div class="newsletter">
+                <h3 class="highlight-text">Join our newsletter</h3><br>
+                <p>Receive tools, insights, and news about AI and data.</p><br>
+                <form action="https://gmail.us13.list-manage.com/subscribe/post?u=38247e1f4461f4a62bc4e7326&id=0e0dbd0688" method="POST" id="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button class="btn" id="btn">Subscribe</button>
+                </form>
+            </div>
     </div>
 </footer>
 
